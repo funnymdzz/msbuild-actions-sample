@@ -1,0 +1,29 @@
+name: .NET MSBuild
+on:
+  push:
+    branches:
+      - master
+      - dotnetmsbuild-test
+jobs:
+  build:
+    name: .NET MSBuild
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+
+    # - name: Setup MSBuild.exe
+    #   uses: warrenbuckley/Setup-MSBuild@v1
+
+    # This doesn't work;;
+    - name: MSBuild
+      run: dotnet msbuild msbuild_actions_sample.sln -p:OutDir="out/"
+      shell: cmd
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: build-result
+        path: ./msbuild_actions_sample/out/
+
