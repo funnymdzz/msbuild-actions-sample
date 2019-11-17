@@ -15,8 +15,9 @@ jobs:
     # - name: Setup MSBuild.exe
     #   uses: warrenbuckley/Setup-MSBuild@v1
 
+    # This doesn't work;;
     - name: MSBuild
-      run: dotnet msbuild msbuild_actions_sample.sln -p:OutDir="out"
+      run: dotnet msbuild msbuild_actions_sample.sln -p:OutDir="out/"
       shell: cmd
 
     - name: Upload artifact
