@@ -19,7 +19,7 @@ jobs:
     - name: MSBuild
       env:
         MSBUILD: C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe
-      run: $MSBUILD msbuild_actions_sample.sln -p:OutDir="out"
+      run: %MSBUILD% msbuild_actions_sample.sln -p:OutDir="out"
       shell: cmd
 
     - name: Upload artifact
