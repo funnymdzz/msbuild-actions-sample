@@ -1,4 +1,4 @@
-name: MSBuild
+name: .NET MSBuild
 on:
   push:
     branches:
