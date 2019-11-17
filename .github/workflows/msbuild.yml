@@ -17,12 +17,9 @@ jobs:
       run: msbuild msbuild_actions_sample.sln -p:OutDir="out"
       shell: cmd
 
-    - name: cd working-directory
-      run: cd ./msbuild_actions_sample
-
     - name: Upload artifact
       uses: actions/upload-artifact@v1
       with:
         name: build-result
-        path: ./out/
+        path: ./msbuild_actions_sample/out/
 
