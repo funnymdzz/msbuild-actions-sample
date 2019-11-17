@@ -10,8 +10,8 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v1
-      ref: github.event.ref
       with:
+        ref: github.event.ref
         fetch-depth: 1
 
     - name: Setup MSBuild.exe
