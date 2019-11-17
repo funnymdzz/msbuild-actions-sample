@@ -23,38 +23,7 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: Move working-directory
-      working-directory: ./name: MSBuild
-on: [push, pull_request]
-jobs:
-  build:
-    name: MSBuild
-    # runs-on: self-hosted
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v1
-      with:
-        fetch-depth: 1
-
-    - name: Setup MSBuild.exe
-      uses: warrenbuckley/Setup-MSBuild@v1
-
-    - name: MSBuild
-      run: msbuild msbuild_actions_sample.sln -p:OutDir="out"
-      shell: cmd
-
-  updload:
-    name: Upload artifact
-    needs: build
-    runs-on: windows-latest
-    steps:
-    - name: Move working-directory
       working-directory: ./msbuild_actions_sample
-
-    - name: Upload artifact
-      uses: actions/upload-artifact@v1
-      with:
-        name: build-result
-        path: ./out/
 
     - name: Upload artifact
       uses: actions/upload-artifact@v1
