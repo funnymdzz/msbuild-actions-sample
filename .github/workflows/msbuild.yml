@@ -3,7 +3,8 @@ on: [push, pull_request]
 jobs:
   build:
       name: MSBuild
-      runs-on: self-hosted
+      # runs-on: self-hosted
+      runs-on: windows-latest
       steps:
       - uses: actions/checkout@v1
         with:
