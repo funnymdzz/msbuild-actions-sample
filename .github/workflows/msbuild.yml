@@ -10,8 +10,8 @@ jobs:
       with:
         fetch-depth: 1
 
-    - name: Setup MSBuild.exe
-      uses: warrenbuckley/Setup-MSBuild@v1
+    # - name: Setup MSBuild.exe
+    #   uses: warrenbuckley/Setup-MSBuild@v1
 
     - name: MSBuild
       run: msbuild msbuild_actions_sample.sln -p:OutDir="out"
