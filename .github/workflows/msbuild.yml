@@ -8,23 +8,19 @@ jobs:
     name: MSBuild
     # runs-on: self-hosted
     runs-on: windows-latest
-    env:
-      MSBUILD: C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe
     steps:
     - uses: actions/checkout@v1
       with:
         fetch-depth: 1
 
-    - name: Check MSBuild.exe
-      run: where $MSBUILD
-
-    - name: Setup MSBuild.exe if not exist msbuild command
-      if: failure()
-      uses: warrenbuckley/Setup-MSBuild@v1
+    # - name: Setup MSBuild.exe if not exist msbuild command
+    #   uses: warrenbuckley/Setup-MSBuild@v1
 
     - name: MSBuild
-      run: msbuild msbuild_actions_sample.sln -p:OutDir="out"
+      run: MSBUILD msbuild_actions_sample.sln -p:OutDir="out"
       shell: cmd
+      env:
+        MSBUILD: C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe
 
     - name: Upload artifact
       uses: actions/upload-artifact@v1
