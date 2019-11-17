@@ -2,6 +2,7 @@ name: MSBuild
 on:
   push:
     branches:
+      - master
       - msbuild-test
 jobs:
   build:
