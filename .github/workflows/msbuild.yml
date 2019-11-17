@@ -8,12 +8,24 @@ jobs:
     name: MSBuild
     # runs-on: self-hosted
     runs-on: windows-latest
+    env:
+      MSBUILD: C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe
     steps:
     - uses: actions/checkout@v1
       with:
         fetch-depth: 1
 
-    - name: Setup MSBuild.exe
+    - name: Cache msbuild cache
+      uses: actions/cache@v1
+      with:
+        path: x64/Debug/*.obj
+        key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+
+    - name: Check MSBuild.exe
+      run: where $MSBUILD
+
+    - name: Setup MSBuild.exe if not exist msbuild command
+      if: failure()
       uses: warrenbuckley/Setup-MSBuild@v1
 
     - name: MSBuild
