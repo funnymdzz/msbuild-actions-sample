@@ -12,6 +12,9 @@ jobs:
 
     # - name: Setup MSBuild.exe
     #   uses: warrenbuckley/Setup-MSBuild@v1
+    - name: Add path
+      run: set PATH=%PATH%;C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin
+      shell: cmd
 
     - name: MSBuild
       run: msbuild msbuild_actions_sample.sln -p:OutDir="out"
