@@ -13,14 +13,12 @@ jobs:
       with:
         fetch-depth: 1
 
-    # - name: Setup MSBuild.exe if not exist msbuild command
-    #   uses: warrenbuckley/Setup-MSBuild@v1
+    - name: Setup MSBuild.exe
+      uses: warrenbuckley/Setup-MSBuild@v1
 
     - name: MSBuild
-      env:
-        MSBUILD: C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe
-      run: $MSBUILD msbuild_actions_sample.sln -p:OutDir="out"
-      shell: bash
+      run: msbuild msbuild_actions_sample.sln -p:OutDir="out"
+      shell: cmd
 
     - name: Upload artifact
       uses: actions/upload-artifact@v1
