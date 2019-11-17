@@ -2,6 +2,7 @@ name: MSBuild
 on:
   push:
     branches:
+      - master
       - dotnetmsbuild-test
 jobs:
   build:
