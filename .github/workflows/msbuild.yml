@@ -1,5 +1,8 @@
 name: MSBuild
-on: [push, pull_request]
+on:
+　push:
+    branches:
+      - msbuild-test
 jobs:
   build:
     name: MSBuild
@@ -7,14 +10,12 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v1
+      ref: github.event.ref
       with:
         fetch-depth: 1
 
-    # - name: Setup MSBuild.exe
-    #   uses: warrenbuckley/Setup-MSBuild@v1
-    - name: Add path
-      run: setx PATH "%PATH%;C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin" -m
-      shell: cmd
+    - name: Setup MSBuild.exe
+      uses: warrenbuckley/Setup-MSBuild@v1
 
     - name: MSBuild
       run: msbuild msbuild_actions_sample.sln -p:OutDir="out"
