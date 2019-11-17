@@ -17,13 +17,20 @@ jobs:
       run: msbuild msbuild_actions_sample.sln -p:OutDir="out"
       shell: cmd
 
+    - name: pwd & ls
+      run: |
+        pwd
+        ls
+
   updload:
     name: Upload artifact
     needs: build
     runs-on: windows-latest
     steps:
-    - name: cd working-directory
-      run: cd ./msbuild_actions_sample
+    - name: pwd & ls
+      run: |
+        pwd
+        ls
 
     - name: Upload artifact
       uses: actions/upload-artifact@v1
