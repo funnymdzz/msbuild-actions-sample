@@ -24,6 +24,7 @@ jobs:
     steps:
     - name: Upload artifact
       uses: actions/upload-artifact@v1
+      working-directory: ./msbuild_actions_sample
       with:
         name: build-result
         path: ./out/
