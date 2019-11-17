@@ -11,3 +11,4 @@ jobs:
       - name: Run echo
         run: |
           echo "Hello World"
+        shell: cmd
