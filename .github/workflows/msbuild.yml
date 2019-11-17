@@ -22,8 +22,8 @@ jobs:
     needs: build
     runs-on: windows-latest
     steps:
-    - name: Move working-directory
-      working-directory: ./msbuild_actions_sample
+    - name: cd working-directory
+      run: cd ./msbuild_actions_sample
 
     - name: Upload artifact
       uses: actions/upload-artifact@v1
