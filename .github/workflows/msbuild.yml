@@ -1,6 +1,6 @@
 name: MSBuild
 on:
-　push:
+  push:
     branches:
       - msbuild-test
 jobs:
